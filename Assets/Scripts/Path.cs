@@ -73,7 +73,6 @@ public class Path : MonoBehaviour
 					Gizmos.DrawLine(previouschild.position, child.position);
 				}
 
-
 				if (child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.GoToFirst)
 				{
 					Gizmos.DrawLine(child.position, firstchild.position);

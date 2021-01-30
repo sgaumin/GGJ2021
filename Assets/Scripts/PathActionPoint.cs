@@ -12,6 +12,7 @@ public class PathActionPoint : MonoBehaviour
 	[SerializeField, Range(0f, 10f)] private float rotateDuration;
 	[SerializeField] private Ease rotationEase = Ease.InOutSine;
 	[SerializeField] private Path newPath;
+	[SerializeField, Range(0f, 1f)] private float probability;
 
 	private string originalName = "";
 
@@ -21,6 +22,7 @@ public class PathActionPoint : MonoBehaviour
 	public float RotateDuration => rotateDuration;
 	public Ease RotationEase => rotationEase;
 	public Path NewPath => newPath;
+	public float Probability => probability;
 
 	public void Init()
 	{
@@ -102,6 +104,7 @@ public class PathActionPointDrawer : Editor
 		SerializedProperty rotateDuration = serializedObject.FindProperty("rotateDuration");
 		SerializedProperty rotationEase = serializedObject.FindProperty("rotationEase");
 		SerializedProperty newPath = serializedObject.FindProperty("newPath");
+		SerializedProperty probability = serializedObject.FindProperty("probability");
 
 		EditorGUILayout.PropertyField(type);
 		EditorGUILayout.Space();
@@ -133,8 +136,9 @@ public class PathActionPointDrawer : Editor
 		}
 		else if ((PathActionPointType)type.enumValueIndex == PathActionPointType.ChangePath)
 		{
-			EditorGUILayout.LabelField("ACTION: Change the current path.");
+			EditorGUILayout.LabelField("ACTION: Change the current path with a probability.");
 			EditorGUILayout.PropertyField(newPath);
+			EditorGUILayout.PropertyField(probability);
 		}
 
 		serializedObject.ApplyModifiedProperties();

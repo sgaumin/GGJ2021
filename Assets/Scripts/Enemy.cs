@@ -78,10 +78,13 @@ public class Enemy : MonoBehaviour
 
 	private void DoChangePath()
 	{
-		Path newPath = Instantiate(currentPointAction.NewPath, path.transform.parent);
-		Destroy(path.gameObject);
-		path = newPath;
-		path.Init();
+		if (currentPointAction.Probability > Random.value)
+		{
+			Path newPath = Instantiate(currentPointAction.NewPath, path.transform.parent);
+			Destroy(path.gameObject);
+			path = newPath;
+			path.Init();
+		}
 
 		DoNextActionOnPath();
 	}
@@ -137,5 +140,11 @@ public class Enemy : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawLine(transform.position, agent.destination);
 	}
 }
