@@ -62,23 +62,30 @@ public class Path : MonoBehaviour
 			if (child == transform)
 				continue;
 
-			if (child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.GoToFirst || child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.GoToNext)
+			if (child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.GoToFirst || child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.GoToNext || child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.RestartPath)
 			{
 				if (previouschild == null)
 				{
 					firstchild = child;
 				}
-				else
+				else if (child.GetComponent<PathActionPoint>()?.Type != PathActionPointType.RestartPath)
 				{
 					Gizmos.DrawLine(previouschild.position, child.position);
 				}
 
-				Gizmos.DrawSphere(child.position, 0.3f);
 
 				if (child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.GoToFirst)
 				{
 					Gizmos.DrawLine(child.position, firstchild.position);
-					break;
+				}
+				else if (child.GetComponent<PathActionPoint>()?.Type == PathActionPointType.RestartPath)
+				{
+					Gizmos.DrawLine(previouschild.position, firstchild.position);
+				}
+
+				if (child.GetComponent<PathActionPoint>()?.Type != PathActionPointType.RestartPath)
+				{
+					Gizmos.DrawSphere(child.position, 0.3f);
 				}
 
 				previouschild = child;
