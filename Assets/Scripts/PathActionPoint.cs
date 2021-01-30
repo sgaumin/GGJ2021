@@ -56,6 +56,26 @@ public class PathActionPoint : MonoBehaviour
 		gameObject.name += " - DONE";
 	}
 
+	[ContextMenu("Create Point After")]
+	private void CreatePointAfter()
+	{
+		GameObject o = new GameObject();
+		o.AddComponent<PathActionPoint>();
+		o.transform.parent = transform.parent;
+		o.name = "Point";
+		o.transform.SetSiblingIndex(transform.GetSiblingIndex() + 1);
+	}
+
+	[ContextMenu("Create Point Before")]
+	private void CreatePointBefore()
+	{
+		GameObject o = new GameObject();
+		o.AddComponent<PathActionPoint>();
+		o.transform.parent = transform.parent;
+		o.name = "Point";
+		o.transform.SetSiblingIndex(transform.GetSiblingIndex());
+	}
+
 #if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
