@@ -170,6 +170,12 @@ public class Enemy : MonoBehaviour
 		MoveToTarget(playerToChase.transform.position);
 	}
 
+	private void StopChasingPlayer()
+	{
+		isChasingPlayer = false;
+		DoSameActionOnPath();
+	}
+
 	private void Update()
 	{
 		if (!isChasingPlayer)
@@ -193,15 +199,21 @@ public class Enemy : MonoBehaviour
 				RaycastHit hit;
 				if (Physics.Raycast(transform.position, direction, out hit, distanceDetection))
 				{
-					if (hit.collider.GetComponent<PlayerController>())
+					playerToChase = hit.collider.GetComponent<PlayerController>();
+					if (playerToChase != null && !playerToChase.IsHidden)
 					{
-						//isChasingPlayer = true;
-						//playerToChase = hit.collider.GetComponent<PlayerController>();
-						//DoChasePlayer();
-
+						isChasingPlayer = true;
+						DoChasePlayer();
 						UIManager.Instance.SetText("Player Detected");
 					}
 				}
+			}
+		}
+		else
+		{
+			if (playerToChase.IsHidden)
+			{
+				StopChasingPlayer();
 			}
 		}
 	}

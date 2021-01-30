@@ -1,42 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
-    Rigidbody rb;
-   
-
-    public float moveSpeed;
-    public float horizontal;
-    public float vertical;
+	// https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
+	Rigidbody rb;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-       
-    }
+	public float moveSpeed;
+	public float horizontal;
+	public float vertical;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+	public bool IsHidden;
 
-        ProcessActions();
+	// Start is called before the first frame update
+	void Start()
+	{
+		rb = GetComponent<Rigidbody>();
 
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+	}
+
+	// Update is called once per frame
+	void FixedUpdate()
+	{
+
+		ProcessActions();
+
+		horizontal = Input.GetAxis("Horizontal");
+		vertical = Input.GetAxis("Vertical");
 
 
 
-        void ProcessActions()
-        {
-            Vector3 move = new Vector3(horizontal, 0f, vertical);
-            rb.AddForce(move.normalized * moveSpeed);
+		void ProcessActions()
+		{
+			Vector3 move = new Vector3(horizontal, 0f, vertical);
+			rb.AddForce(move.normalized * moveSpeed);
 
-        }
-    }
+		}
+	}
 }
 
