@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     bool isCrouching;
 
+    public float turnSpeed = 20f;
+    Quaternion rotation = Quaternion.identity;
+
     public float moveSpeed;
     public float horizontal;
     public float vertical;
@@ -60,12 +63,16 @@ public class PlayerController : MonoBehaviour
             IsHidden = false;
         }
 
+        
 
         void ProcessActions()
         {
             Vector3 move = new Vector3(horizontal, 0f, vertical);
+            Vector3 desiredForward = Vector3.RotateTowards(transform.forward, move, turnSpeed * Time.deltaTime, 0f);
+            rotation = Quaternion.LookRotation(desiredForward);
             rb.AddForce(move.normalized * moveSpeed);
-
+            rb.MoveRotation(rotation);
+            model.transform.Rotate(rotation.eulerAngles);
         }
 
         //Animation
