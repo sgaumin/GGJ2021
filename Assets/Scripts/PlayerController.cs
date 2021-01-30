@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 	// https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
 	Rigidbody rb;
 	public HidingPlace hidingPlace;
+	Animator animator;
+	bool isCrouching;
 
 	public float moveSpeed;
 	public float horizontal;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		animator = GetComponent<Animator>();
 		hidingPlace = null;
 
 	}
@@ -27,8 +30,6 @@ public class PlayerController : MonoBehaviour
 
 		ProcessActions();
 
-		
-
 		horizontal = Input.GetAxis("Horizontal");
 		vertical = Input.GetAxis("Vertical");
 
@@ -36,17 +37,20 @@ public class PlayerController : MonoBehaviour
         {
 			if (CanHide)
             {
+				isCrouching = true;
 				//UIManager.Instance.SetText("Player is Hiding");
 				IsHidden = true;
 				hidingPlace.launchTimer = true;
             }
 			else
             {
+				isCrouching = false;
 				IsHidden = false;
             }
         }
 		else
         {
+			isCrouching = false;
 			IsHidden = false;
         }
 
@@ -57,6 +61,19 @@ public class PlayerController : MonoBehaviour
 			rb.AddForce(move.normalized * moveSpeed);
 
 		}
+
+		//Animation
+		//isMoving
+		bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+		bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+		bool isMoving = hasHorizontalInput || hasVerticalInput;
+		animator.SetBool("isMoving", isMoving);
+
+		//isHidden
+		animator.SetBool("isHidden", IsHidden);
+
+		//isCrouching
+		animator.SetBool("isCrouching", isCrouching);
 	}
 }
 
