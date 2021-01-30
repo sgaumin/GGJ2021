@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
 	{
 		agent = GetComponent<NavMeshAgent>();
 		this.path = path;
+		transform.position = path.GetFirstActionPoint().transform.position;
 
 		DoNextActionOnPath();
 	}
