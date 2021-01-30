@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1596702300839890641}
   - component: {fileID: 2416035914956620148}
   - component: {fileID: 460366157451605438}
+  - component: {fileID: -4425887306711684477}
   m_Layer: 0
-  m_Name: M_Poutre_A (1)
+  m_Name: Poutre_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-4425887306711684477
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117660378495980651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6590859, y: 5.0800014, z: 0.32498777}
+  m_Center: {x: -6.0169626e-16, y: -0.00000004842672, z: 0.16249312}

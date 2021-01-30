@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4838261923525143668}
   - component: {fileID: 8397856510181155793}
   - component: {fileID: 6012262937234528027}
+  - component: {fileID: 4922085407713402162}
   m_Layer: 0
-  m_Name: M_Poutre_B (10)
+  m_Name: Poutre_Standing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4922085407713402162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219431421108811470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6590859, y: 5.0800023, z: 0.32498643}
+  m_Center: {x: 0.000000057041053, y: 1.8239438e-14, z: 0.16249312}
