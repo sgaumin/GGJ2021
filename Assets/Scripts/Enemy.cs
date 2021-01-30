@@ -211,7 +211,7 @@ public class Enemy : MonoBehaviour
 		}
 		else
 		{
-			if (playerToChase.IsHidden)
+			if (playerToChase != null &&  playerToChase.IsHidden)
 			{
 				StopChasingPlayer();
 			}
