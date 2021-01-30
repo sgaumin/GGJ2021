@@ -2,78 +2,84 @@
 
 public class PlayerController : MonoBehaviour
 {
-	// https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
-	Rigidbody rb;
-	public HidingPlace hidingPlace;
-	Animator animator;
-	bool isCrouching;
+    // https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
+    Rigidbody rb;
+    public HidingPlace hidingPlace;
+    Animator animator;
+    bool isCrouching;
 
-	public float moveSpeed;
-	public float horizontal;
-	public float vertical;
+    public float moveSpeed;
+    public float horizontal;
+    public float vertical;
 
-	public bool CanHide;
-	public bool IsHidden;
+    public bool CanHide;
+    public bool IsHidden;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		rb = GetComponent<Rigidbody>();
-		animator = GetComponent<Animator>();
-		hidingPlace = null;
+    public GameObject model;
 
-	}
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
+        
+        hidingPlace = null;
 
-	// Update is called once per frame
-	void FixedUpdate()
-	{
+    }
 
-		ProcessActions();
+    // Update is called once per frame
+    void FixedUpdate()
+    {
 
-		horizontal = Input.GetAxis("Horizontal");
-		vertical = Input.GetAxis("Vertical");
+        ProcessActions();
 
-		if(Input.GetKey(KeyCode.Space))
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
+        if (Input.GetKey(KeyCode.Space))
         {
-			if (CanHide)
+            if (CanHide)
             {
-				isCrouching = true;
-				//UIManager.Instance.SetText("Player is Hiding");
-				IsHidden = true;
-				hidingPlace.launchTimer = true;
+                isCrouching = true;
+                //UIManager.Instance.SetText("Player is Hiding");
+                IsHidden = true;
+                //model.SetActive(false);
+                hidingPlace.launchTimer = true;
             }
-			else
+            else
             {
-				isCrouching = false;
-				IsHidden = false;
+                model.SetActive(true);
+                isCrouching = false;
+                IsHidden = false;
             }
         }
-		else
+        else
         {
-			isCrouching = false;
-			IsHidden = false;
+            model.SetActive(true);
+            isCrouching = false;
+            IsHidden = false;
         }
 
 
-		void ProcessActions()
-		{
-			Vector3 move = new Vector3(horizontal, 0f, vertical);
-			rb.AddForce(move.normalized * moveSpeed);
+        void ProcessActions()
+        {
+            Vector3 move = new Vector3(horizontal, 0f, vertical);
+            rb.AddForce(move.normalized * moveSpeed);
 
-		}
+        }
 
-		//Animation
-		//isMoving
-		bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
-		bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-		bool isMoving = hasHorizontalInput || hasVerticalInput;
-		animator.SetBool("isMoving", isMoving);
+        //Animation
+        //isMoving
+        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+        bool isMoving = hasHorizontalInput || hasVerticalInput;
+        animator.SetBool("isMoving", isMoving);
 
-		//isHidden
-		animator.SetBool("isHidden", IsHidden);
+        //isHidden
+        animator.SetBool("isHidden", IsHidden);
 
-		//isCrouching
-		animator.SetBool("isCrouching", isCrouching);
-	}
+        //isCrouching
+        animator.SetBool("isCrouching", isCrouching);
+    }
 }
 
