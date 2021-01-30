@@ -1,18 +1,27 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-	[Header("References")]
-	[SerializeField] private NavMeshSurface ground;
+	[SerializeField] List<Path> paths = new List<Path>();
 
-	private List<Enemy> enemies = new List<Enemy>();
+	[Header("References")]
+	[SerializeField] private Enemy enemyPrefab;
 
 	protected void Start()
 	{
-		enemies = FindObjectsOfType<Enemy>().ToList();
-		enemies.ForEach(x => x.StartMovingRandomly());
+		int i = 0;
+		foreach (Path path in paths)
+		{
+			GameObject currentEnemyHolder = new GameObject();
+			currentEnemyHolder.transform.SetParent(transform);
+			currentEnemyHolder.name = $"Enemy {i++}";
+
+			Path currentPath = Instantiate(path, currentEnemyHolder.transform);
+			currentPath.Init();
+
+			Enemy currentEnemy = Instantiate(enemyPrefab, currentEnemyHolder.transform);
+			currentEnemy.Init(currentPath);
+		}
 	}
 }
