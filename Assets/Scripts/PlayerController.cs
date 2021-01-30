@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         {
 			if (CanHide)
             {
-				UIManager.Instance.SetText("Player is Hiding");
+				//UIManager.Instance.SetText("Player is Hiding");
 				IsHidden = true;
 				hidingPlace.launchTimer = true;
             }

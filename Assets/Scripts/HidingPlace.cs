@@ -38,7 +38,7 @@ public class HidingPlace : MonoBehaviour
         if (launchTimer)
         {
             timeLocal -= Time.deltaTime;
-            UIManager.Instance.SetText("Timer before Ejection: "+ timeLocal.ToString("f2"));
+            //UIManager.Instance.SetText("Timer before Ejection: "+ timeLocal.ToString("f2"));
         }
 
         if (timeLocal<=0.0f)
@@ -53,7 +53,7 @@ public class HidingPlace : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            UIManager.Instance.SetText("Player Can Hide (Space to hide)");
+            //UIManager.Instance.SetText("Player Can Hide (Space to hide)");
             PlayerController playerController = other.GetComponent<PlayerController>();
             playerController.CanHide = false;
             launchTimer = false;//reset launchtimer
