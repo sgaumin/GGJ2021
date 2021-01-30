@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5aa7d08356c14aaa07e563d9a3169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3960384237794166677, guid: 2da3f0da0f993e14f9f22aa2812024fd,
+  enemyPrefab: {fileID: 3969274536841801034, guid: 96b909ddc6fa43741adbc1c468c05c25,
     type: 3}
   timeBeforeTransformation: 20
   value: 2

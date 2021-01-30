@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
 
 	[Header("References")]
 	[SerializeField] private Enemy enemyPrefab;
+	[SerializeField] private PlayerController player;
 
 	protected void Start()
 	{

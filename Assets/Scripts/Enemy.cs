@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using System.Collections;
-using Tools.Utils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,28 +7,53 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
 	[Header("Moving Parameters")]
-	[SerializeField, FloatRangeSlider(0f, 10f)] private FloatRange walkRadius = new FloatRange(1f, 3f);
-	[SerializeField, FloatRangeSlider(0f, 10f)] private FloatRange timeBetweenMove = new FloatRange(1f, 3f);
+	[SerializeField] private float minDistanceToTarget = 0.1f;
 
-	[Header("Parameters")]
-	private Path path;
+	[Header("Detection Parameters")]
+	[SerializeField] private float angleDetection = 90f;
+	[SerializeField] private float distanceDetection = 3f;
+	[SerializeField] private float raycastCount = 3f;
+	[SerializeField] private LayerMask playerLayer;
 
+	[Header("Debug")]
+	[SerializeField] private Path path;
+	[SerializeField] private bool showDestinationDraw = true;
+
+	private bool isChasingPlayer;
 	private bool isDoingAction;
 	private NavMeshAgent agent;
 	private PathActionPoint currentPointAction;
 	private Coroutine rotateCoroutine;
 	private Coroutine waitCoroutine;
+	private PlayerController playerToChase;
 
 	internal void Init(Path path)
 	{
 		agent = GetComponent<NavMeshAgent>();
 		this.path = path;
+
 		transform.position = path.GetFirstActionPoint().transform.position;
 
 		DoNextActionOnPath();
 	}
 
 	private void DoNextActionOnPath()
+	{
+		isDoingAction = false;
+
+		if (currentPointAction != null)
+		{
+			currentPointAction.SetAsDone();
+		}
+
+		if (path.HasAnotherPoint)
+		{
+			currentPointAction = path.GetNextPoint();
+			DoAction(currentPointAction);
+		}
+	}
+
+	private void DoSameActionOnPath()
 	{
 		isDoingAction = false;
 
@@ -128,15 +152,55 @@ public class Enemy : MonoBehaviour
 		agent.destination = target;
 	}
 
+	private void DoChasePlayer()
+	{
+		UIManager.Instance.SetText("Player Detected");
+
+		// Stop every action
+		if (waitCoroutine != null)
+		{
+			StopCoroutine(waitCoroutine);
+		}
+		if (rotateCoroutine != null)
+		{
+			StopCoroutine(rotateCoroutine);
+		}
+
+		// Assign destination as Player
+		MoveToTarget(playerToChase.transform.position);
+	}
+
 	private void Update()
 	{
-		if (isDoingAction)
+		if (!isChasingPlayer)
 		{
-			if (currentPointAction.Type == PathActionPointType.GoToNext || currentPointAction.Type == PathActionPointType.GoToFirst)
+			if (isDoingAction)
 			{
-				if (agent.remainingDistance == 0)
+				if (currentPointAction.Type == PathActionPointType.GoToNext || currentPointAction.Type == PathActionPointType.GoToFirst)
 				{
-					DoNextActionOnPath();
+					if (agent.remainingDistance <= minDistanceToTarget)
+					{
+						DoNextActionOnPath();
+					}
+				}
+			}
+
+			for (int i = 0; i < raycastCount; i++)
+			{
+				Vector3 direction = Quaternion.AngleAxis(-angleDetection + 2 * angleDetection / (raycastCount - 1) * i, Vector3.up) * transform.forward;
+				Debug.DrawRay(transform.position, direction * distanceDetection, Color.green);
+
+				RaycastHit hit;
+				if (Physics.Raycast(transform.position, direction, out hit, distanceDetection))
+				{
+					if (hit.collider.GetComponent<PlayerController>())
+					{
+						//isChasingPlayer = true;
+						//playerToChase = hit.collider.GetComponent<PlayerController>();
+						//DoChasePlayer();
+
+						UIManager.Instance.SetText("Player Detected");
+					}
 				}
 			}
 		}
@@ -144,7 +208,10 @@ public class Enemy : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawLine(transform.position, agent.destination);
+		if (showDestinationDraw)
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawLine(transform.position, agent.destination);
+		}
 	}
 }
