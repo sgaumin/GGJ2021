@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private Path path;
 	[SerializeField] private bool showDestinationDraw = true;
 
+	[Header("References")]
+	[SerializeField] private Animator animator;
+
 	private bool isChasingPlayer;
 	private bool isDoingAction;
 	private NavMeshAgent agent;
@@ -39,6 +42,9 @@ public class Enemy : MonoBehaviour
 
 	private void DoNextActionOnPath()
 	{
+		animator.SetBool("idle", true);
+		animator.SetBool("walk", false);
+
 		isDoingAction = false;
 
 		if (currentPointAction != null)
@@ -55,6 +61,9 @@ public class Enemy : MonoBehaviour
 
 	private void DoSameActionOnPath()
 	{
+		animator.SetBool("idle", true);
+		animator.SetBool("walk", false);
+
 		isDoingAction = false;
 
 		if (currentPointAction != null)
@@ -104,6 +113,9 @@ public class Enemy : MonoBehaviour
 	{
 		if (currentPointAction.Probability > Random.value)
 		{
+			animator.SetBool("idle", true);
+			animator.SetBool("walk", false);
+
 			Path newPath = Instantiate(currentPointAction.NewPath, path.transform.parent);
 			Destroy(path.gameObject);
 			path = newPath;
@@ -115,6 +127,9 @@ public class Enemy : MonoBehaviour
 
 	private void DoRotate()
 	{
+		animator.SetBool("idle", true);
+		animator.SetBool("walk", false);
+
 		if (rotateCoroutine != null)
 		{
 			StopCoroutine(rotateCoroutine);
@@ -133,6 +148,9 @@ public class Enemy : MonoBehaviour
 
 	private void DoWait()
 	{
+		animator.SetBool("idle", true);
+		animator.SetBool("walk", false);
+
 		if (waitCoroutine != null)
 		{
 			StopCoroutine(waitCoroutine);
@@ -149,6 +167,9 @@ public class Enemy : MonoBehaviour
 
 	private void MoveToTarget(Vector3 target)
 	{
+		animator.SetBool("idle", false);
+		animator.SetBool("walk", true);
+
 		agent.destination = target;
 	}
 
@@ -211,7 +232,7 @@ public class Enemy : MonoBehaviour
 		}
 		else
 		{
-			if (playerToChase != null &&  playerToChase.IsHidden)
+			if (playerToChase != null && playerToChase.IsHidden)
 			{
 				StopChasingPlayer();
 			}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,13 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject model;
 
+	[Header("Audio")]
+	[SerializeField] private float footSoundDuration = 0.2f;
+	[FMODUnity.EventRef, SerializeField] private string footStep;
+
+	private FMOD.Studio.EventInstance footStepInstance;
+	private Coroutine playFootStepSound = null;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -27,6 +35,7 @@ public class PlayerController : MonoBehaviour
 		animator = GetComponentInChildren<Animator>();
 
 		hidingPlace = null;
+		footStepInstance = FMODUnity.RuntimeManager.CreateInstance(footStep);
 
 	}
 
@@ -77,6 +86,14 @@ public class PlayerController : MonoBehaviour
 				Vector3 desiredForward = move.normalized;
 				rotation = Quaternion.LookRotation(desiredForward);
 				model.transform.rotation = Quaternion.Lerp(model.transform.rotation, rotation, 0.1f);
+
+				if (!string.IsNullOrEmpty(footStep))
+				{
+					if (playFootStepSound == null)
+					{
+						PlayFootStepSound();
+					}
+				}
 			}
 		}
 
@@ -92,6 +109,19 @@ public class PlayerController : MonoBehaviour
 
 		//isCrouching
 		animator.SetBool("isCrouching", isCrouching);
+	}
+
+	private void PlayFootStepSound()
+	{
+		playFootStepSound = StartCoroutine(PlayFootStepSoundCore());
+	}
+
+	private IEnumerator PlayFootStepSoundCore()
+	{
+		footStepInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+		footStepInstance.start();
+		yield return new WaitForSeconds(footSoundDuration);
+		playFootStepSound = null;
 	}
 }
 

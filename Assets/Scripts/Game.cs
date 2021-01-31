@@ -12,9 +12,16 @@ public class Game : GameSystem
 	public event GameEventHandler OnGameOver;
 	public event GameEventHandler OnPause;
 
+	[Header("Game Parameters")]
+	[SerializeField] private float gameLoopDuration = 20f;
+
+	[Header("Audio")]
+	[FMODUnity.EventRef, SerializeField] private string ambiance;
+
 	[Header("References")]
 	[SerializeField] private FadScreen fader;
 
+	private FMOD.Studio.EventInstance ambianceInstance;
 	private GameStates gameState;
 	private Coroutine loadingLevel;
 
@@ -49,6 +56,12 @@ public class Game : GameSystem
 
 	protected void Start()
 	{
+		if (!string.IsNullOrEmpty(ambiance))
+		{
+			ambianceInstance = FMODUnity.RuntimeManager.CreateInstance(ambiance);
+			ambianceInstance.start();
+		}
+
 		GameState = GameStates.Play;
 		fader.FadIn();
 	}

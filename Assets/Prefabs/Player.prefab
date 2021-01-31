@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4113821939632422555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.19, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.75, y: 1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4511905608828252352}
   m_Father: {fileID: 0}
@@ -59,8 +59,8 @@ Rigidbody:
   m_GameObject: {fileID: 4113821939632422555}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 2
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -79,12 +79,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidingPlace: {fileID: 0}
-  moveSpeed: 16
+  turnSpeed: 60
+  moveSpeed: 70
   horizontal: 0
   vertical: 0
   CanHide: 0
   IsHidden: 0
   model: {fileID: 3879378922906626682}
+  footSoundDuration: 0.35
+  footStep: event:/Soundesign/Footsteps
 --- !u!208 &7535233313379549148
 NavMeshObstacle:
   m_ObjectHideFlags: 0
