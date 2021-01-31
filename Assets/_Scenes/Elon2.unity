@@ -138,71 +138,6 @@ PrefabInstance:
       propertyPath: ejectionDirection.x
       value: -0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 215393150556758256, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 215393150556758256, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 215393150556758256, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 215393150556758259, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 215393150556758259, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 0.740566
-      objectReference: {fileID: 0}
-    - target: {fileID: 215393150556758259, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0.90531605
-      objectReference: {fileID: 0}
-    - target: {fileID: 215393150556758259, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241004585254631795, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 0.58526164
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241004585254631795, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0.7887265
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241004585254631795, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.b
-      value: 0.9056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241004585254631795, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.minScalar
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241004585254631795, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241004585254631795, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 3774282529066347213, guid: 42e059759f8d2544a9a1254b1769e7c9,
         type: 3}
       propertyPath: m_Enabled
@@ -218,21 +153,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4919258579232366836, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 4919258579232366836, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919258579232366836, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 5265600083335964957, guid: 42e059759f8d2544a9a1254b1769e7c9,
         type: 3}
       propertyPath: m_LocalRotation.x
