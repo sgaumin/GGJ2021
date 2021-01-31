@@ -611,7 +611,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.25
+  m_fontSize: 34.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -921,6 +921,11 @@ PrefabInstance:
       propertyPath: UIManager
       value: 
       objectReference: {fileID: 3468361206685315040}
+    - target: {fileID: 7246981277467468507, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: gameLoopDuration
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f77c7f45a95cc40a928615b549a427, type: 3}
 --- !u!114 &7485545447159013869 stripped
@@ -1606,12 +1611,12 @@ PrefabInstance:
     - target: {fileID: 3928722024100199507, guid: 70dcbaea908f1374295c2aa4af06da9d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0030139636
+      value: 0.0030139782
       objectReference: {fileID: 0}
     - target: {fileID: 3928722024100199507, guid: 70dcbaea908f1374295c2aa4af06da9d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0018202073
+      value: -0.0018202162
       objectReference: {fileID: 0}
     - target: {fileID: 3928722024100199507, guid: 70dcbaea908f1374295c2aa4af06da9d,
         type: 3}
@@ -1626,12 +1631,12 @@ PrefabInstance:
     - target: {fileID: 3928722025522930047, guid: 70dcbaea908f1374295c2aa4af06da9d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0030139636
+      value: 0.0030139782
       objectReference: {fileID: 0}
     - target: {fileID: 3928722025522930047, guid: 70dcbaea908f1374295c2aa4af06da9d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0018202073
+      value: -0.0018202162
       objectReference: {fileID: 0}
     - target: {fileID: 3928722025522930047, guid: 70dcbaea908f1374295c2aa4af06da9d,
         type: 3}

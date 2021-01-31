@@ -12,13 +12,16 @@ public class HidingPlace : MonoBehaviour
 
 	[Header("Audio")]
 	[FMODUnity.EventRef, SerializeField] private string ejectSound;
+	[FMODUnity.EventRef, SerializeField] private string entranceSound;
 
 	private FMOD.Studio.EventInstance ejectInstance;
+	private FMOD.Studio.EventInstance entranceInstance;
 
 	private void Start()
 	{
 		timeLocal = timeBeforeEjection;
 		ejectInstance = FMODUnity.RuntimeManager.CreateInstance(ejectSound);
+		entranceInstance = FMODUnity.RuntimeManager.CreateInstance(entranceSound);
 	}
 
 	private void Update()
@@ -49,6 +52,7 @@ public class HidingPlace : MonoBehaviour
 			PlayerController playerController = other.GetComponent<PlayerController>();
 			playerController.IsHidden = true;
 			launchTimer = true;
+			entranceInstance.start();
 		}
 	}
 

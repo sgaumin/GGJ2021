@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1beca8e20ef091e40bb4397e92edb0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 1981722988905213781, guid: d60c8ab2e7dd79b4e8c46904bd61d918,
+  collectiblePrefab: {fileID: 1981722988905213778, guid: d60c8ab2e7dd79b4e8c46904bd61d918,
     type: 3}
-  spawnRate: 20
+  spawnRate:
+    min: 5
+    max: 15

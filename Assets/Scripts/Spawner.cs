@@ -1,31 +1,32 @@
-﻿using UnityEngine;
+﻿using Tools.Utils;
+using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-	public GameObject objectToSpawn;
+	public Collectible collectiblePrefab;
 	private float time;
-	public float spawnRate;
 
-	private Transform spawner;
+	[SerializeField, FloatRangeSlider(0f, 30f)] private FloatRange spawnRate = new FloatRange(5f, 15f);
 
+	private float currentSpawnRate;
 
 	private void Start()
 	{
-		spawner = GetComponent<Transform>();
-
+		currentSpawnRate = spawnRate.RandomValue;
 	}
-
 
 	private void Update()
 	{
 		time += Time.deltaTime;
 
-		if (time > spawnRate)
+		if (time > currentSpawnRate)
 		{
-			Instantiate(objectToSpawn, spawner.position, spawner.rotation);//Instantiate
+			Collectible currentCollectible = Instantiate(collectiblePrefab, null);
+			currentCollectible.transform.position = transform.position;
+			currentCollectible.transform.rotation = transform.rotation;
+
+			currentSpawnRate = spawnRate.RandomValue;
 			time = 0f;//Reset Time
 		}
-
 	}
-
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1981722988905213776}
   - component: {fileID: 1981722988905213779}
   - component: {fileID: 1981722988905213778}
-  - component: {fileID: 2148986170980194072}
+  - component: {fileID: 6331901472583905700}
   m_Layer: 0
   m_Name: Collectible
   m_TagString: Untagged
@@ -27,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981722988905213781}
-  m_LocalRotation: {x: -0, y: -0, z: -0.13052596, w: 0.99144495}
-  m_LocalPosition: {x: -0.13752958, y: 1.0091243, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1448924471976033146}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15.000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1981722988905213776
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981722988905213781}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -80,15 +80,29 @@ MonoBehaviour:
     type: 3}
   timeBeforeTransformation: 20
   value: 2
+  sound: "event:/Soundesign/R\xE9cup\xE9ration_boite"
   spawnEnemy: 0
---- !u!95 &2148986170980194072
+--- !u!65 &6331901472583905700
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981722988905213781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &8441040432928900281
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981722988905213781}
+  m_GameObject: {fileID: 2256388685328032192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cc6dbe15626ea16478bf347b71a51147, type: 2}
@@ -184,6 +198,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8abd96b6f5915174680789fe3c282faf, type: 3}
+--- !u!1 &2256388685328032192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8abd96b6f5915174680789fe3c282faf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1409948136238816401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1448924471976033146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8abd96b6f5915174680789fe3c282faf,

@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 	private Coroutine timer;
 	private FMOD.Studio.EventInstance endChronoSoundInstance;
 
-	public int CurrentTime { get; set; }
+	public int CurrenTime { get; set; }
 
 	protected void Awake()
 	{
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
 	public void StartTimer(int value)
 	{
-		CurrentTime = value;
+		CurrenTime = value;
 		timer = StartCoroutine(StartTimerCore());
 	}
 
@@ -38,15 +38,15 @@ public class UIManager : MonoBehaviour
 	{
 		while (true)
 		{
-			chrono.text = CurrentTime.ToString();
+			chrono.text = CurrenTime.ToString();
 
-			if (CurrentTime == 10)
+			if (CurrenTime == 10)
 			{
 				endChronoSoundInstance = FMODUnity.RuntimeManager.CreateInstance(endChronoSound);
 				endChronoSoundInstance.start();
 			}
 
-			if (CurrentTime == 0)
+			if (CurrenTime == 0)
 			{
 				chrono.text = "";
 				game.ReloadLevel();
@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 			}
 
 			yield return new WaitForSeconds(1f);
-			CurrentTime--;
+			CurrenTime--;
 		}
 	}
 

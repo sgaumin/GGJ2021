@@ -6,8 +6,13 @@ public class Collectible : MonoBehaviour
 	public float timeBeforeTransformation; //after that time, the collectible turns into an enemy
 	public int value; //value of the object for scoring
 
+	[Header("Audio")]
+	[FMODUnity.EventRef, SerializeField] private string sound;
+
 	[Header("Debug")]
 	[SerializeField] private bool spawnEnemy;
+
+	private FMOD.Studio.EventInstance soundInstance;
 
 	// Update is called once per frame
 	void Update()
@@ -27,7 +32,10 @@ public class Collectible : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			UIManager.Instance.CurrentTime -= value;
+			soundInstance = FMODUnity.RuntimeManager.CreateInstance(sound);
+			soundInstance.start();
+
+			UIManager.Instance.CurrenTime -= value;
 			Destroy(gameObject);//destroy gameobject
 		}
 	}
