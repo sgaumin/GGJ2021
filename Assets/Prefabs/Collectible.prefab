@@ -79,7 +79,7 @@ MonoBehaviour:
     type: 3}
   timeBeforeTransformation: 20
   value: 2
-  spawnEnemy: 1
+  spawnEnemy: 0
 --- !u!1001 &1409948136238816401
 PrefabInstance:
   m_ObjectHideFlags: 0
