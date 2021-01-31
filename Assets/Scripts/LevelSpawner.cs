@@ -1,17 +1,23 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class LevelSpawner : MonoBehaviour
 {
-	[SerializeField] List<Path> paths = new List<Path>();
+	[SerializeField] private List<Path> paths = new List<Path>();
 
 	[Header("References")]
-	[SerializeField] private Enemy enemyPrefab;
 	[SerializeField] private PlayerController player;
+	[SerializeField] private Enemy enemyPrefab;
+
+	public List<Enemy> Enemies { get; set; } = new List<Enemy>();
+	public PlayerController Player => player;
 
 	protected void Start()
 	{
+		player.Level = this;
+
 		int i = 0;
+		Enemies.Clear();
 		foreach (Path path in paths)
 		{
 			GameObject currentEnemyHolder = new GameObject();
@@ -22,7 +28,9 @@ public class EnemyManager : MonoBehaviour
 			currentPath.Init();
 
 			Enemy currentEnemy = Instantiate(enemyPrefab, currentEnemyHolder.transform);
+			currentEnemy.Level = this;
 			currentEnemy.Init(currentPath);
+			Enemies.Add(currentEnemy);
 		}
 	}
 }

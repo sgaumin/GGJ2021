@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3240564644996932466}
+  - {fileID: 7160652315565860158}
   - {fileID: 1857699063805068423}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dc52d7a03854747abbc90cc4458624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLoopDuration: 20
+  ambiance: event:/Soundesign/Ambiance
   fader: {fileID: 1857699063805068419}
 --- !u!1001 &576153364358352620
 PrefabInstance:
@@ -57,7 +59,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 3240564644996932493}
+      objectReference: {fileID: 0}
     - target: {fileID: 2177832480006244971, guid: 19da4f67621aea34dbd4e5bbbecb34ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,15 +259,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70dcbaea908f1374295c2aa4af06da9d, type: 3}
---- !u!4 &3240564644996932466 stripped
+--- !u!4 &7160652315565860158 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4381328670056538133, guid: 70dcbaea908f1374295c2aa4af06da9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1167935706699334503}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &3240564644996932493 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4381328670056538346, guid: 70dcbaea908f1374295c2aa4af06da9d,
+  m_CorrespondingSourceObject: {fileID: 8316714756294485593, guid: 70dcbaea908f1374295c2aa4af06da9d,
     type: 3}
   m_PrefabInstance: {fileID: 1167935706699334503}
   m_PrefabAsset: {fileID: 0}

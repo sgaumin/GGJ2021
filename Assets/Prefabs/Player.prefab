@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4113821939632422555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.75, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4511905608828252352}
@@ -46,10 +46,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.24359393
+  m_Height: 1.256876
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.371562, z: 0}
 --- !u!54 &4113821939632422554
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87,7 +87,19 @@ MonoBehaviour:
   IsHidden: 0
   model: {fileID: 3879378922906626682}
   footSoundDuration: 0.35
-  footStep: event:/Soundesign/Footsteps
+  carpetLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  footStepSound: event:/Soundesign/Footsteps
+  heartSoundLimits:
+    min: 3
+    max: 12
+  heartSound: event:/Soundesign/Battements de coeurs
+  distanceSafeEnemy: 7
+  enemySurpriseSound:
+    min: 1
+    max: 3
+  surpriseSound: event:/Soundesign/Voix_Han
 --- !u!208 &7535233313379549148
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -98,7 +110,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_Extents: {x: 0.4, y: 1, z: 0.4}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

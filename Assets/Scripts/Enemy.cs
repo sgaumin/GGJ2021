@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using System.Collections;
+using Tools.Utils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,13 +16,19 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private float raycastCount = 3f;
 	[SerializeField] private LayerMask playerLayer;
 
+	[Header("Sound")]
+	[SerializeField, FloatRangeSlider(0f, 20f)] private FloatRange enemySoundLimits = new FloatRange(1f, 3f);
+	[FMODUnity.EventRef, SerializeField] private string enemySound;
+
 	[Header("Debug")]
 	[SerializeField] private Path path;
 	[SerializeField] private bool showDestinationDraw = true;
+	[SerializeField] private bool isIgnoringPlayer;
 
 	[Header("References")]
 	[SerializeField] private Animator animator;
 
+	private FMOD.Studio.EventInstance enemySoundInstance;
 	private bool isChasingPlayer;
 	private bool isDoingAction;
 	private NavMeshAgent agent;
@@ -29,6 +36,8 @@ public class Enemy : MonoBehaviour
 	private Coroutine rotateCoroutine;
 	private Coroutine waitCoroutine;
 	private PlayerController playerToChase;
+
+	public LevelSpawner Level { get; set; }
 
 	internal void Init(Path path)
 	{
@@ -38,6 +47,9 @@ public class Enemy : MonoBehaviour
 		transform.position = path.GetFirstActionPoint().transform.position;
 
 		DoNextActionOnPath();
+
+		enemySoundInstance = FMODUnity.RuntimeManager.CreateInstance(enemySound);
+		enemySoundInstance.start();
 	}
 
 	private void DoNextActionOnPath()
@@ -212,20 +224,23 @@ public class Enemy : MonoBehaviour
 				}
 			}
 
-			for (int i = 0; i < raycastCount; i++)
+			if (!isIgnoringPlayer)
 			{
-				Vector3 direction = Quaternion.AngleAxis(-angleDetection + 2 * angleDetection / (raycastCount - 1) * i, Vector3.up) * transform.forward;
-				Debug.DrawRay(transform.position, direction * distanceDetection, Color.green);
-
-				RaycastHit hit;
-				if (Physics.Raycast(transform.position, direction, out hit, distanceDetection))
+				for (int i = 0; i < raycastCount; i++)
 				{
-					playerToChase = hit.collider.GetComponent<PlayerController>();
-					if (playerToChase != null && !playerToChase.IsHidden)
+					Vector3 direction = Quaternion.AngleAxis(-angleDetection + 2 * angleDetection / (raycastCount - 1) * i, Vector3.up) * transform.forward;
+					Debug.DrawRay(transform.position, direction * distanceDetection, Color.green);
+
+					RaycastHit hit;
+					if (Physics.Raycast(transform.position, direction, out hit, distanceDetection))
 					{
-						isChasingPlayer = true;
-						DoChasePlayer();
-						UIManager.Instance.SetText("Player Detected");
+						playerToChase = hit.collider.GetComponent<PlayerController>();
+						if (playerToChase != null && !playerToChase.IsHidden)
+						{
+							isChasingPlayer = true;
+							DoChasePlayer();
+							UIManager.Instance.SetText("Player Detected");
+						}
 					}
 				}
 			}
@@ -237,6 +252,17 @@ public class Enemy : MonoBehaviour
 				StopChasingPlayer();
 			}
 		}
+
+		CheckDistanceWithPlayer();
+	}
+
+	private void CheckDistanceWithPlayer()
+	{
+		float distance = Vector3.Distance(Level.Player.transform.position, transform.position);
+		float ratio = (distance - enemySoundLimits.Min) / (enemySoundLimits.Max - enemySoundLimits.Min);
+
+		enemySoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+		enemySoundInstance.setParameterByName("Ennemie ", Mathf.Min(1f - (float)ratio, 1f));
 	}
 
 	private void OnDrawGizmos()

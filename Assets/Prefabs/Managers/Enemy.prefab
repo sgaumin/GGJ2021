@@ -45,10 +45,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.29125533
+  m_Height: 1.7742572
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.11287141, z: 0}
 --- !u!195 &3969274536841801039
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -90,8 +90,13 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  enemySoundLimits:
+    min: 1
+    max: 7
+  enemySound: event:/Soundesign/Monster
   path: {fileID: 0}
   showDestinationDraw: 1
+  isIgnoringPlayer: 1
   animator: {fileID: 905707705813485328}
 --- !u!1001 &398796374909487957
 PrefabInstance:

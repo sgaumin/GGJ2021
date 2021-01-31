@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 861850844758759593}
   - component: {fileID: 861850844758759592}
   m_Layer: 0
-  m_Name: EnemyManager
+  m_Name: LevelSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paths: []
+  playerSpawn: {fileID: 0}
+  playerPrefab: {fileID: 4113821939632422553, guid: 5d188805d1c202842a80f3b2dcb7ad62,
+    type: 3}
   enemyPrefab: {fileID: 7589833289808163210, guid: 96b909ddc6fa43741adbc1c468c05c25,
     type: 3}
