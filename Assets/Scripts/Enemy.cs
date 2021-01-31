@@ -289,8 +289,8 @@ public class Enemy : MonoBehaviour
 			animator.SetBool("idle", true);
 			animator.SetBool("walk", false);
 
-			// Reload Game
-			Level.Game.ReloadLevel();
+			// Loose
+			Level.Game.LoadByName("Loose");
 		}
 	}
 

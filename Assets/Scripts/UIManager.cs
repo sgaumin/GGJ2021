@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
 			if (CurrenTime == 0)
 			{
 				chrono.gameObject.FadOut();
-				game.ReloadLevel();
+				game.LoadByName("WinVF");
 				break;
 			}
 

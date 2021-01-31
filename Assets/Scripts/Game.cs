@@ -114,6 +114,19 @@ public class Game : GameSystem
 		}
 	}
 
+	public void LoadByName(string name)
+	{
+		if (loadingLevel == null)
+		{
+			loadingLevel = StartCoroutine(LoadLevelCore(
+
+			content: () =>
+			{
+				LevelLoader.LoadLevelByName(name);
+			}));
+		}
+	}
+
 	private IEnumerator LoadLevelCore(Action content = null)
 	{
 		Time.timeScale = 1f;
