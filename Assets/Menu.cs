@@ -1,20 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Tools;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    public Game game;
+	[FMODUnity.EventRef, SerializeField] private string clicSound;
+	[FMODUnity.EventRef, SerializeField] private string musicSound;
+	public Game game;
 
+	private bool hasClicked;
+	private FMOD.Studio.EventInstance clickInstance;
+	private FMOD.Studio.EventInstance musicSoundInstance;
 
+	protected void Start()
+	{
+		musicSoundInstance = FMODUnity.RuntimeManager.CreateInstance(musicSound);
+		musicSoundInstance.setParameterByName("Music", 0);
+		musicSoundInstance.start();
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.anyKeyDown)
-        {
-            game.LoadNextLevel();
-        }
-    }
+	void Update()
+	{
+		if (Input.anyKeyDown && !hasClicked)
+		{
+			clickInstance = FMODUnity.RuntimeManager.CreateInstance(clicSound);
+			clickInstance.start();
+
+			hasClicked = true;
+			game.LoadNextLevel();
+		}
+	}
 }

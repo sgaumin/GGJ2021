@@ -12559,6 +12559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f3eef7a08083249a5cf09196b72574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicSound: event:/Soundesign/Bouton_Enter
+  musicSound: event:/Music/Music
   game: {fileID: 6324153151498835549}
 --- !u!1001 &1731525695
 PrefabInstance:
