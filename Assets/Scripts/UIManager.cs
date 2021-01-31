@@ -31,7 +31,11 @@ public class UIManager : MonoBehaviour
 	public void StartTimer(int value)
 	{
 		CurrenTime = value;
-		timer = StartCoroutine(StartTimerCore());
+
+		if (chrono != null)
+		{
+			timer = StartCoroutine(StartTimerCore());
+		}
 	}
 
 	private IEnumerator StartTimerCore()
