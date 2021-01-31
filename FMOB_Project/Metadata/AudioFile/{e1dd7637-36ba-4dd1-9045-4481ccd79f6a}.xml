@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{e1dd7637-36ba-4dd1-9045-4481ccd79f6a}">
+		<property name="assetPath">
+			<value>VICTOIRE - GGJ21.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.6</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bb5fd105-329f-4aab-8676-578b0549c808}</destination>
+		</relationship>
+	</object>
+</objects>

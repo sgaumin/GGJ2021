@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{c787f07a-6531-4dfc-8050-2df18ec21fd8}">
+		<property name="assetPath">
+			<value>DECOUVERTE _ SHUSH.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>41.806462585034012</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bb5fd105-329f-4aab-8676-578b0549c808}</destination>
+		</relationship>
+	</object>
+</objects>

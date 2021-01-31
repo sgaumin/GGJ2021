@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{ac982537-6797-4580-87bb-a83ccf5a0970}">
+		<property name="assetPath">
+			<value>CACHETTE _ SHUSH.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>41.032244897959181</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bb5fd105-329f-4aab-8676-578b0549c808}</destination>
+		</relationship>
+	</object>
+</objects>

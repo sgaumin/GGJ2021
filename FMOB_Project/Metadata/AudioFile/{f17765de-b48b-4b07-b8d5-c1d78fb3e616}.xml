@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{f17765de-b48b-4b07-b8d5-c1d78fb3e616}">
+		<property name="assetPath">
+			<value>DEFAITE - GGJ21.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>14</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bb5fd105-329f-4aab-8676-578b0549c808}</destination>
+		</relationship>
+	</object>
+</objects>

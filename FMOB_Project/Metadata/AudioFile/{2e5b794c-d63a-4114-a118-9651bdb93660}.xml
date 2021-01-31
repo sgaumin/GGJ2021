@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{2e5b794c-d63a-4114-a118-9651bdb93660}">
+		<property name="assetPath">
+			<value>menu - shush - ggj21.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>21.677437641723355</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bb5fd105-329f-4aab-8676-578b0549c808}</destination>
+		</relationship>
+	</object>
+</objects>
