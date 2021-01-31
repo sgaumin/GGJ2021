@@ -191,6 +191,8 @@ public class Enemy : MonoBehaviour
 
 	private void DoChasePlayer()
 	{
+		MusicHolder.Instance.SetChaseMusic();
+
 		// Stop every action
 		if (waitCoroutine != null)
 		{
@@ -208,6 +210,8 @@ public class Enemy : MonoBehaviour
 
 	private void StopChasingPlayer()
 	{
+		MusicHolder.Instance.SetFirstMusic();
+
 		isChasingPlayer = false;
 		agent.speed = startSpeed;
 		DoSameActionOnPath();

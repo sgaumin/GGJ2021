@@ -37,7 +37,6 @@ public class UIManager : MonoBehaviour
 		game.OnGameOver += StopTimer;
 	}
 
-
 	public void SetText(string text) => console.text = text;
 
 	public void StartTimer(int value)
@@ -85,5 +84,7 @@ public class UIManager : MonoBehaviour
 	private void OnDestroy()
 	{
 		game.OnGameOver -= StopTimer;
+
+		endChronoSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 	}
 }
