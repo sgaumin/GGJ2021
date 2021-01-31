@@ -250,17 +250,24 @@ public class Enemy : MonoBehaviour
 		}
 		else
 		{
-			MoveToTarget(playerToChase.transform.position);
+			if (playerToChase != null)
+			{
+				MoveToTarget(playerToChase.transform.position);
 
-			if (playerToChase != null && playerToChase.IsHidden)
+				if (playerToChase.IsHidden)
+				{
+					StopChasingPlayer();
+				}
+
+				if (agent.remainingDistance <= minDistanceToPlayer)
+				{
+					CatchPlayer();
+					playerToChase = null;
+				}
+			}
+			else
 			{
 				StopChasingPlayer();
-			}
-
-			if (agent.remainingDistance <= minDistanceToPlayer)
-			{
-				CatchPlayer();
-				playerToChase = null;
 			}
 		}
 
