@@ -13,13 +13,14 @@ public class Game : GameSystem
 	public event GameEventHandler OnPause;
 
 	[Header("Game Parameters")]
-	[SerializeField] private float gameLoopDuration = 20f;
+	[SerializeField] private int gameLoopDuration = 20;
 
 	[Header("Audio")]
 	[FMODUnity.EventRef, SerializeField] private string ambiance;
 
 	[Header("References")]
 	[SerializeField] private FadScreen fader;
+	[SerializeField] private UIManager UIManager;
 
 	private FMOD.Studio.EventInstance ambianceInstance;
 	private GameStates gameState;
@@ -64,6 +65,8 @@ public class Game : GameSystem
 
 		GameState = GameStates.Play;
 		fader.FadIn();
+
+		UIManager.StartTimer(gameLoopDuration);
 	}
 
 	protected override void Update()

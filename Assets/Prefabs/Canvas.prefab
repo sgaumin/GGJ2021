@@ -545,4 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993b96b674f167c4bbf36aa1a9599677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endChronoSound: event:/Soundesign/Rise
+  chrono: {fileID: 0}
   console: {fileID: 1573480391003442496}

@@ -134,39 +134,42 @@ public class PlayerController : MonoBehaviour
 
 	private void ProcessActions()
 	{
-		// Movements
-		Vector3 move = new Vector3(horizontal, 0f, vertical);
-		rb.AddForce(move.normalized * moveSpeed);
-
-		// Rotation
-		if (move != Vector3.zero)
+		if (Level.Game.GameState == GameStates.Play)
 		{
-			Vector3 desiredForward = move.normalized;
-			rotation = Quaternion.LookRotation(desiredForward);
-			model.transform.rotation = Quaternion.Lerp(model.transform.rotation, rotation, 0.1f);
+			// Movements
+			Vector3 move = new Vector3(horizontal, 0f, vertical);
+			rb.AddForce(move.normalized * moveSpeed);
 
-			// Foot Sound
-			if (!string.IsNullOrEmpty(footStepSound))
+			// Rotation
+			if (move != Vector3.zero)
 			{
-				if (playFootStepSound == null)
+				Vector3 desiredForward = move.normalized;
+				rotation = Quaternion.LookRotation(desiredForward);
+				model.transform.rotation = Quaternion.Lerp(model.transform.rotation, rotation, 0.1f);
+
+				// Foot Sound
+				if (!string.IsNullOrEmpty(footStepSound))
 				{
-					PlayFootStepSound();
+					if (playFootStepSound == null)
+					{
+						PlayFootStepSound();
+					}
 				}
 			}
+
+			//Animation
+			//isMoving
+			bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+			bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+			bool isMoving = hasHorizontalInput || hasVerticalInput;
+			animator.SetBool("isMoving", isMoving);
+
+			//isHidden
+			animator.SetBool("isHidden", IsHidden);
+
+			//isCrouching
+			animator.SetBool("isCrouching", isCrouching);
 		}
-
-		//Animation
-		//isMoving
-		bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
-		bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-		bool isMoving = hasHorizontalInput || hasVerticalInput;
-		animator.SetBool("isMoving", isMoving);
-
-		//isHidden
-		animator.SetBool("isHidden", IsHidden);
-
-		//isCrouching
-		animator.SetBool("isCrouching", isCrouching);
 	}
 
 	private void PlayFootStepSound()

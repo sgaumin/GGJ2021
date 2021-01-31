@@ -8,9 +8,11 @@ public class LevelSpawner : MonoBehaviour
 	[Header("References")]
 	[SerializeField] private PlayerController player;
 	[SerializeField] private Enemy enemyPrefab;
+	[SerializeField] private Game game;
 
 	public List<Enemy> Enemies { get; set; } = new List<Enemy>();
 	public PlayerController Player => player;
+	public Game Game => game;
 
 	protected void Start()
 	{
