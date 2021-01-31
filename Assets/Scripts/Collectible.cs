@@ -4,7 +4,7 @@ public class Collectible : MonoBehaviour
 {
 	public GameObject enemyPrefab;
 	public float timeBeforeTransformation; //after that time, the collectible turns into an enemy
-	public float value; //value of the object for scoring
+	public int value; //value of the object for scoring
 
 	[Header("Debug")]
 	[SerializeField] private bool spawnEnemy;
@@ -27,9 +27,7 @@ public class Collectible : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			var playerScore = other.GetComponent<PlayerScore>();//Increase score of value
-			playerScore.IncreaseScore(value);
-
+			UIManager.Instance.CurrentTime -= value;
 			Destroy(gameObject);//destroy gameobject
 		}
 	}
