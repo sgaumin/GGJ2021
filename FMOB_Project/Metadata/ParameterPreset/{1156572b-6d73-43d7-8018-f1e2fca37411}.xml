@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{1156572b-6d73-43d7-8018-f1e2fca37411}">
+		<property name="name">
+			<value>Tapis</value>
+		</property>
+		<relationship name="folder">
+			<destination>{682f3c12-eaae-44b6-a9ba-fa8ca3752591}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1291ab1e-f3b5-4f21-be03-1ef47936034c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1291ab1e-f3b5-4f21-be03-1ef47936034c}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
