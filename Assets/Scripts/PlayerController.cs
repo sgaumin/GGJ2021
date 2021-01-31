@@ -6,22 +6,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	// https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
-	Rigidbody rb;
-	public HidingPlace hidingPlace;
-	Animator animator;
-	bool isCrouching;
 
-	public float turnSpeed = 20f;
-	Quaternion rotation = Quaternion.identity;
-
-	public float moveSpeed;
-	public float horizontal;
-	public float vertical;
-
-	public bool CanHide;
-	public bool IsHidden;
-
-	public GameObject model;
+	[Header("Player Parameters")]
+	[SerializeField] private float turnSpeed = 20f;
+	[SerializeField] private float moveSpeed;
 
 	[Header("Audio")]
 	[SerializeField] private float footSoundDuration = 0.2f;
@@ -35,6 +23,15 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, IntRangeSlider(0, 10)] private IntRange enemySurpriseSound = new IntRange(1, 3);
 	[FMODUnity.EventRef, SerializeField] private string surpriseSound;
 
+	[Header("References")]
+	[SerializeField] private GameObject model;
+
+	private Rigidbody rb;
+	private Animator animator;
+	private bool isCrouching;
+	private Quaternion rotation = Quaternion.identity;
+	private float horizontal;
+	private float vertical;
 	private FMOD.Studio.EventInstance footStepInstance;
 	private FMOD.Studio.EventInstance heartSoundInstance;
 	private FMOD.Studio.EventInstance surpriseSoundInstance;
@@ -45,13 +42,13 @@ public class PlayerController : MonoBehaviour
 	private float walkingOnCarpet;
 
 	public LevelSpawner Level { get; set; }
+	public bool IsHidden { get; set; }
 
 	protected void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		animator = GetComponentInChildren<Animator>();
 
-		hidingPlace = null;
 		isSafe = true;
 
 		footStepInstance = FMODUnity.RuntimeManager.CreateInstance(footStepSound);
@@ -63,32 +60,7 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		horizontal = Input.GetAxis("Horizontal");
-		vertical = Input.GetAxis("Vertical");
 
-		if (Input.GetKey(KeyCode.Space))
-		{
-			if (CanHide)
-			{
-				isCrouching = true;
-				//UIManager.Instance.SetText("Player is Hiding");
-				IsHidden = true;
-				//model.SetActive(false);
-				hidingPlace.launchTimer = true;
-			}
-			else
-			{
-				model.SetActive(true);
-				isCrouching = false;
-				IsHidden = false;
-			}
-		}
-		else
-		{
-			model.SetActive(true);
-			isCrouching = false;
-			IsHidden = false;
-		}
 
 		ProcessActions();
 		CheckDistanceWithEnemies();
@@ -137,6 +109,9 @@ public class PlayerController : MonoBehaviour
 		if (Level.Game.GameState == GameStates.Play)
 		{
 			// Movements
+			horizontal = Input.GetAxis("Horizontal");
+			vertical = Input.GetAxis("Vertical");
+
 			Vector3 move = new Vector3(horizontal, 0f, vertical);
 			rb.AddForce(move.normalized * moveSpeed);
 
