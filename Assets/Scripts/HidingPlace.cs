@@ -54,7 +54,7 @@ public class HidingPlace : MonoBehaviour
 			launchTimer = true;
 			entranceInstance.start();
 
-			MusicHolder.Instance.SetHideMusic();
+			MusicHolder.Instance?.SetHideMusic();
 		}
 	}
 
@@ -67,7 +67,7 @@ public class HidingPlace : MonoBehaviour
 			launchTimer = false;//reset launchtimer
 			timeLocal = timeBeforeEjection;
 
-			MusicHolder.Instance.SetFirstMusic();
+			MusicHolder.Instance?.SetFirstMusic();
 		}
 	}
 

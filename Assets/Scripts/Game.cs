@@ -66,7 +66,7 @@ public class Game : GameSystem
 		GameState = GameStates.Play;
 		fader.FadIn();
 
-		MusicHolder.Instance.SetFirstMusic();
+		MusicHolder.Instance?.SetFirstMusic();
 		UIManager.StartTimer(gameLoopDuration);
 	}
 
