@@ -338,20 +338,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 7342358823927327625, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 7342358823927327625, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 7342358823927327625, guid: 42e059759f8d2544a9a1254b1769e7c9,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -0.41
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e059759f8d2544a9a1254b1769e7c9, type: 3}
