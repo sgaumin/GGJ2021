@@ -185,5 +185,12 @@ public class PlayerController : MonoBehaviour
 		yield return new WaitForSeconds(footSoundDuration);
 		playFootStepSound = null;
 	}
+
+	private void OnDestroy()
+	{
+		footStepInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+		heartSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+		surpriseSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+	}
 }
 

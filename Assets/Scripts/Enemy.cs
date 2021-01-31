@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 {
 	[Header("Moving Parameters")]
 	[SerializeField] private float minDistanceToTarget = 0.1f;
+	[SerializeField] private float minDistanceToPlayer = 0.1f;
+	[SerializeField] private float speedMultiplierChase = 1.5f;
 
 	[Header("Detection Parameters")]
 	[SerializeField] private float angleDetection = 90f;
@@ -36,6 +38,7 @@ public class Enemy : MonoBehaviour
 	private Coroutine rotateCoroutine;
 	private Coroutine waitCoroutine;
 	private PlayerController playerToChase;
+	private float startSpeed;
 
 	public LevelSpawner Level { get; set; }
 
@@ -45,6 +48,7 @@ public class Enemy : MonoBehaviour
 		this.path = path;
 
 		transform.position = path.GetFirstActionPoint().transform.position;
+		startSpeed = agent.speed;
 
 		DoNextActionOnPath();
 
@@ -187,8 +191,6 @@ public class Enemy : MonoBehaviour
 
 	private void DoChasePlayer()
 	{
-		UIManager.Instance.SetText("Player Detected");
-
 		// Stop every action
 		if (waitCoroutine != null)
 		{
@@ -200,12 +202,14 @@ public class Enemy : MonoBehaviour
 		}
 
 		// Assign destination as Player
+		agent.speed *= speedMultiplierChase;
 		MoveToTarget(playerToChase.transform.position);
 	}
 
 	private void StopChasingPlayer()
 	{
 		isChasingPlayer = false;
+		agent.speed = startSpeed;
 		DoSameActionOnPath();
 	}
 
@@ -224,7 +228,7 @@ public class Enemy : MonoBehaviour
 				}
 			}
 
-			if (!isIgnoringPlayer)
+			if (!isIgnoringPlayer && Level.Game.GameState == GameStates.Play)
 			{
 				for (int i = 0; i < raycastCount; i++)
 				{
@@ -239,7 +243,6 @@ public class Enemy : MonoBehaviour
 						{
 							isChasingPlayer = true;
 							DoChasePlayer();
-							UIManager.Instance.SetText("Player Detected");
 						}
 					}
 				}
@@ -247,13 +250,37 @@ public class Enemy : MonoBehaviour
 		}
 		else
 		{
+			MoveToTarget(playerToChase.transform.position);
+
 			if (playerToChase != null && playerToChase.IsHidden)
 			{
 				StopChasingPlayer();
 			}
+
+			if (agent.remainingDistance <= minDistanceToPlayer)
+			{
+				CatchPlayer();
+				playerToChase = null;
+			}
 		}
 
 		CheckDistanceWithPlayer();
+	}
+
+	private void CatchPlayer()
+	{
+		if (Level.Game.GameState == GameStates.Play)
+		{
+			Level.Game.GameState = GameStates.GameOver;
+
+			// Play Animation
+			animator.SetTrigger("punch");
+			animator.SetBool("idle", true);
+			animator.SetBool("walk", false);
+
+			// Reload Game
+			Level.Game.ReloadLevel();
+		}
 	}
 
 	private void CheckDistanceWithPlayer()
@@ -272,5 +299,10 @@ public class Enemy : MonoBehaviour
 			Gizmos.color = Color.red;
 			Gizmos.DrawLine(transform.position, agent.destination);
 		}
+	}
+
+	private void OnDestroy()
+	{
+		enemySoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 	}
 }

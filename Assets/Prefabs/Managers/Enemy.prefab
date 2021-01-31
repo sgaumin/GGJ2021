@@ -83,7 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e2a0a37a93a2143944736e819f9863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDistanceToTarget: 0.5
+  minDistanceToTarget: 1
+  minDistanceToPlayer: 1.8
+  speedMultiplierChase: 1.5
   angleDetection: 50
   distanceDetection: 4
   raycastCount: 5
@@ -96,7 +98,7 @@ MonoBehaviour:
   enemySound: event:/Soundesign/Monster
   path: {fileID: 0}
   showDestinationDraw: 1
-  isIgnoringPlayer: 1
+  isIgnoringPlayer: 0
   animator: {fileID: 905707705813485328}
 --- !u!1001 &398796374909487957
 PrefabInstance:

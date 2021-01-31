@@ -120,4 +120,8 @@ public class Game : GameSystem
 		content?.Invoke();
 	}
 
+	private void OnDestroy()
+	{
+		ambianceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+	}
 }

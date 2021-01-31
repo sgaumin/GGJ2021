@@ -18,7 +18,12 @@ public class UIManager : MonoBehaviour
 	private Coroutine timer;
 	private FMOD.Studio.EventInstance endChronoSoundInstance;
 
-	protected void Awake() => Instance = this;
+	protected void Awake()
+	{
+		Instance = this;
+		game.OnGameOver += StopTimer;
+	}
+
 
 	public void SetText(string text) => console.text = text;
 
@@ -58,5 +63,12 @@ public class UIManager : MonoBehaviour
 		{
 			StopCoroutine(timer);
 		}
+
+		endChronoSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+	}
+
+	private void OnDestroy()
+	{
+		game.OnGameOver -= StopTimer;
 	}
 }
