@@ -46,9 +46,14 @@ public class HidingPlace : MonoBehaviour
 			launchTimer = false;  //reset timer
 			timeLocal = timeBeforeEjection;
 		}
+		
 	}
 
-	private void OnTriggerExit(Collider other)
+    private void OnDrawGizmos()
+    {
+		Gizmos.DrawLine(transform.position, transform.position + ejectionDirection);
+    }
+    private void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
