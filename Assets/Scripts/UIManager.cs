@@ -24,7 +24,10 @@ public class UIManager : MonoBehaviour
 		set
 		{
 			currenTime = Mathf.Max(value, 0);
-			chrono.text = currenTime.ToString();
+			if (chrono)
+			{
+				chrono.text = currenTime.ToString();
+			}
 		}
 	}
 

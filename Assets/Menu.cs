@@ -13,7 +13,7 @@ public class Menu : MonoBehaviour
 	protected void Start()
 	{
 		musicSoundInstance = FMODUnity.RuntimeManager.CreateInstance(musicSound);
-		musicSoundInstance.setParameterByName("Music", 0);
+		musicSoundInstance.setParameterByName("Music", 0f);
 		musicSoundInstance.start();
 	}
 
