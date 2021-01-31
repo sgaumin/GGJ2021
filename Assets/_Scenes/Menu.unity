@@ -1555,6 +1555,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 633586c41ec1add4aa67282174aed2eb, type: 3}
+--- !u!1001 &202556827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982079024258760658, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379042267266300694, guid: 94441c886c5f8c7479984851e3067012,
+        type: 3}
+      propertyPath: m_Name
+      value: MusicHolder
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94441c886c5f8c7479984851e3067012, type: 3}
 --- !u!1001 &210061535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2290,7 +2359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71000004, y: 0.15574947}
   m_AnchorMax: {x: 0.83470106, y: 0.36411607}
-  m_AnchoredPosition: {x: 0.5, y: -1.3651886}
+  m_AnchoredPosition: {x: 0.5, y: -1.3651733}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345119244
@@ -8741,7 +8810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.24124998, y: 0.4487679}
-  m_AnchoredPosition: {x: 21.200012, y: 2.9052124}
+  m_AnchoredPosition: {x: 21.200073, y: 2.9052124}
   m_SizeDelta: {x: 1.541336, y: 5.8103333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309476346
@@ -11436,7 +11505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57000005, y: 0}
   m_AnchorMax: {x: 1, y: 0.36411607}
-  m_AnchoredPosition: {x: 8.400009, y: -39.699997}
+  m_AnchoredPosition: {x: 8.400024, y: -39.700012}
   m_SizeDelta: {x: 13.4097595, y: 67.809235}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668173601
@@ -13323,7 +13392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.83470106, y: 0.15574947}
   m_AnchorMax: {x: 0.95875007, y: 0.36411607}
-  m_AnchoredPosition: {x: 0.1000061, y: -1.3651886}
+  m_AnchoredPosition: {x: 0.099975586, y: -1.3651733}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820092236
