@@ -127,3 +127,4 @@ MonoBehaviour:
     type: 3}
   timeBeforeTransformation: 20
   value: 2
+  spawnEnemy: 1
