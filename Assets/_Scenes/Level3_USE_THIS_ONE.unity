@@ -163,6 +163,12 @@ PrefabInstance:
       propertyPath: ejectionDirection.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3468361206263900931, guid: 96d660a97dc81654abd3a5817513ea89,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 555c9af60f0fe2f448e6219ffb951eb4,
+        type: 2}
     - target: {fileID: 3468361206944175630, guid: 96d660a97dc81654abd3a5817513ea89,
         type: 3}
       propertyPath: m_Name

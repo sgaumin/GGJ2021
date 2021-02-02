@@ -551,5 +551,5 @@ MonoBehaviour:
   rotateAngle: 0
   rotateDuration: 0
   rotationEase: 4
-  newPath: {fileID: 5947772514105215992, guid: 4b157a362722b1d47bb2049475e960ed, type: 3}
+  newPath: {fileID: 2824106700625205406, guid: 1335f28f7ccd3cc469f591addac7912f, type: 3}
   probability: 0.5

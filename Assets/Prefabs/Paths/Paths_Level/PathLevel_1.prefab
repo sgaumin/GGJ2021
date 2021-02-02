@@ -351,7 +351,7 @@ MonoBehaviour:
   rotateAngle: 0
   rotateDuration: 0
   rotationEase: 4
-  newPath: {fileID: 5947772514105215992, guid: 4b157a362722b1d47bb2049475e960ed, type: 3}
+  newPath: {fileID: 846464678506078217, guid: 5797ac6aab59f0445911578bc45ca575, type: 3}
   probability: 0.2
 --- !u!1 &7209618048929449289
 GameObject:
