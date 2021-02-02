@@ -3,18 +3,25 @@
 public class Menu : MonoBehaviour
 {
 	[FMODUnity.EventRef, SerializeField] private string clicSound;
-	[FMODUnity.EventRef, SerializeField] private string musicSound;
 	public Game game;
+
+	[Header("References")]
+	[SerializeField] private MusicHolder musicHolderPrefab;
 
 	private bool hasClicked;
 	private FMOD.Studio.EventInstance clickInstance;
-	private FMOD.Studio.EventInstance musicSoundInstance;
+
+	private void Awake()
+	{
+		if (MusicHolder.Instance == null)
+		{
+			Instantiate(musicHolderPrefab, null);
+		}
+	}
 
 	protected void Start()
 	{
-		musicSoundInstance = FMODUnity.RuntimeManager.CreateInstance(musicSound);
-		musicSoundInstance.setParameterByName("Music", 0f);
-		musicSoundInstance.start();
+		MusicHolder.Instance.SetMenuMusic();
 	}
 
 	void Update()

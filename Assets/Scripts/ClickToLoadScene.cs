@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ClickToLoadScene : MonoBehaviour
 {
+	[SerializeField] private bool isWinScreen;
 	[SerializeField] private string nameScene;
 
 	[Header("References")]
@@ -15,6 +16,15 @@ public class ClickToLoadScene : MonoBehaviour
 	protected void Start()
 	{
 		fader.FadIn();
+
+		if (isWinScreen)
+		{
+			MusicHolder.Instance.SetVictoryMusic();
+		}
+		else
+		{
+			MusicHolder.Instance.SetLooseMusic();
+		}
 	}
 
 	private void Update()

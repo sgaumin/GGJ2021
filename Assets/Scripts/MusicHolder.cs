@@ -9,7 +9,18 @@ public class MusicHolder : MonoBehaviour
 	private static FMOD.Studio.EventInstance musicSoundInstance;
 	private bool hasBeenInialized;
 
-	protected void Awake() => Instance = this;
+	protected void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
 
 	private void Init()
 	{
@@ -19,6 +30,12 @@ public class MusicHolder : MonoBehaviour
 			musicSoundInstance = FMODUnity.RuntimeManager.CreateInstance(musicSound);
 			musicSoundInstance.start();
 		}
+	}
+
+	public void SetMenuMusic()
+	{
+		Init();
+		musicSoundInstance.setParameterByName("Music", 0f);
 	}
 
 	public void SetFirstMusic()
