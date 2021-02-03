@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 	// https://www.immersivelimit.com/tutorials/simple-character-controller-for-unity
 
 	[Header("Player Parameters")]
-	[SerializeField] private float turnSpeed = 20f;
 	[SerializeField] private float moveSpeed;
 
 	[Header("Audio")]
