@@ -249,6 +249,31 @@ PrefabInstance:
       propertyPath: ejectionDirection.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5496750747316396397, guid: 96d660a97dc81654abd3a5817513ea89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496750747934574606, guid: 96d660a97dc81654abd3a5817513ea89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496750748094622760, guid: 96d660a97dc81654abd3a5817513ea89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496750748565979887, guid: 96d660a97dc81654abd3a5817513ea89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496750748658069640, guid: 96d660a97dc81654abd3a5817513ea89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7585346253176454850, guid: 96d660a97dc81654abd3a5817513ea89,
         type: 3}
       propertyPath: ejectionDirection.x
